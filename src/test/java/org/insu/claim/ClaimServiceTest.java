@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.util.List;
 
 import static java.util.UUID.randomUUID;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.joda.time.Instant.now;
@@ -22,5 +24,16 @@ public class ClaimServiceTest {
         List<String> validation = claimService.saveClaim(claim);
 
         assertThat(validation, hasSize(0));
+    }
+
+    @Test
+    public void saveShouldFailIfTheClaimHasNoClaimId() {
+        ClaimService claimService = new ClaimService();
+        Claim claim = new Claim(null, now().getMillis(), randomUUID().toString(), "");
+
+        List<String> validation = claimService.saveClaim(claim);
+
+        assertThat(validation, hasSize(1));
+        assertThat(validation.get(0), is(equalTo("Claim does not have a claim id.")));
     }
 }
