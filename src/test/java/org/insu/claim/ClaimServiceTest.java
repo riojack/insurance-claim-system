@@ -39,7 +39,6 @@ public class ClaimServiceTest {
 
         List<String> validation = claimService.saveClaim(claim);
 
-        assertThat(validation, hasSize(1));
         assertThat(validation.get(0), is(equalTo("Claim does not have a claim id.")));
     }
 }
