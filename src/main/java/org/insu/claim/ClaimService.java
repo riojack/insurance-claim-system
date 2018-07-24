@@ -1,8 +1,10 @@
 package org.insu.claim;
 
-public class ClaimService {
+import java.util.ArrayList;
+import java.util.List;
 
-    public String getName() {
-        return "Scooby Doo";
+public class ClaimService {
+    public List<String> saveClaim(Claim claim) {
+        return new ArrayList<>();
     }
 }
