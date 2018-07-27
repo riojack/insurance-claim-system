@@ -10,10 +10,10 @@ public class ClaimService {
         if (claim.getClaimId() == null) {
             validations.add("Claim does not have a claim id.");
         }
-        else if (claim.getFilingTimestamp() == 0) {
+        if (claim.getFilingTimestamp() == 0) {
             validations.add("Claim does not have a valid filing date.");
         }
-        else if (claim.getPolicyholderId() == null) {
+        if (claim.getPolicyholderId() == null) {
             validations.add("Claim does not have a valid policyholder id.");
         }
 
