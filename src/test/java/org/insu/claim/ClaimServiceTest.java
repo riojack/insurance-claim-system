@@ -26,7 +26,7 @@ public class ClaimServiceTest {
     }
 
     @Test
-    public void savingShouldSucceedWhenAllFieldsAreValid() {
+    public void saveShouldSucceedWhenAllFieldsAreValid() {
         Claim claim = new Claim(randomUUID().toString(), now().getMillis(), randomUUID().toString(), "");
 
         List<String> validation = claimService.saveClaim(claim);
