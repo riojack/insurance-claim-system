@@ -13,6 +13,9 @@ public class ClaimService {
         else if (claim.getFilingTimestamp() == 0) {
             validations.add("Claim does not have a valid filing date.");
         }
+        else if (claim.getPolicyholderId() == null) {
+            validations.add("Claim does not have a valid policyholder id.");
+        }
 
         return validations;
     }
