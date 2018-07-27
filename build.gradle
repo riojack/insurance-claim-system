@@ -18,8 +18,19 @@ task acceptance(type: Test) {
     classpath = sourceSets.acceptance.runtimeClasspath
 }
 
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'com.insu.claim.Application'
+    }
+    baseName = 'insurance-claim-system'
+    destinationDir file('build/jars')
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 dependencies {
     compile 'joda-time:joda-time:2.10'
+
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
 
