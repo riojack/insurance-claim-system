@@ -1,4 +1,6 @@
-package org.insu.claim;
+package org.insu.claim.services;
+
+import org.insu.claim.domain.Claim;
 
 import java.util.ArrayList;
 import java.util.List;

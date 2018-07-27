@@ -1,5 +1,6 @@
-package org.insu.claim;
+package org.insu.claim.services;
 
+import org.insu.claim.domain.Claim;
 import org.junit.Before;
 import org.junit.Test;
 
