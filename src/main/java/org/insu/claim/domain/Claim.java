@@ -1,4 +1,4 @@
-package org.insu.claim;
+package org.insu.claim.domain;
 
 public class Claim {
     private String claimId;
