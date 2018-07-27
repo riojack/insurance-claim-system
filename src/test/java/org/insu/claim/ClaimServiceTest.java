@@ -50,4 +50,13 @@ public class ClaimServiceTest {
 
         assertThat(validation.get(0), is(equalTo("Claim does not have a valid filing date.")));
     }
+
+    @Test
+    public void saveShouldFailIfTheClaimHasNoPolicyholderId() {
+        Claim claim = new Claim(randomUUID().toString(), now().getMillis(), null, "");
+
+        List<String> validation = claimService.saveClaim(claim);
+
+        assertThat(validation.get(0), is(equalTo("Claim does not have a valid policyholder id.")));
+    }
 }
