@@ -7,6 +7,7 @@ import java.util.List;
 
 import static java.util.UUID.randomUUID;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
@@ -58,5 +59,16 @@ public class ClaimServiceTest {
         List<String> validation = claimService.saveClaim(claim);
 
         assertThat(validation.get(0), is(equalTo("Claim does not have a valid policyholder id.")));
+    }
+
+    @Test
+    public void saveShouldAccumulateMultipleFailures() {
+        Claim claim = new Claim(null, 0, null, "");
+
+        List<String> validation = claimService.saveClaim(claim);
+
+        assertThat(validation, hasItem("Claim does not have a claim id."));
+        assertThat(validation, hasItem("Claim does not have a valid filing date."));
+        assertThat(validation, hasItem("Claim does not have a valid policyholder id."));
     }
 }
