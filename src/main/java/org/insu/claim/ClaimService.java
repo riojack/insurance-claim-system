@@ -10,6 +10,9 @@ public class ClaimService {
         if (claim.getClaimId() == null) {
             validations.add("Claim does not have a claim id.");
         }
+        else if (claim.getFilingTimestamp() == 0) {
+            validations.add("Claim does not have a valid filing date.");
+        }
 
         return validations;
     }

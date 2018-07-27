@@ -41,4 +41,13 @@ public class ClaimServiceTest {
 
         assertThat(validation.get(0), is(equalTo("Claim does not have a claim id.")));
     }
+
+    @Test
+    public void saveShouldFailIfTheClaimHasFilingDateOfZero() {
+        Claim claim = new Claim(randomUUID().toString(), 0, randomUUID().toString(), "");
+
+        List<String> validation = claimService.saveClaim(claim);
+
+        assertThat(validation.get(0), is(equalTo("Claim does not have a valid filing date.")));
+    }
 }
