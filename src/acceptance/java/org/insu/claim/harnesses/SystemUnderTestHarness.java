@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 public class SystemUnderTestHarness {
     private final KillSwitches killSwitches;
-
     private final ProcessBuilder processBuilder;
+
     private Process process;
     private Thread stdoutPumpThread;
     private Thread stderrPumpThread;
@@ -36,6 +36,7 @@ public class SystemUnderTestHarness {
         return () -> {
             while (!this.killSwitches.killSystemUnderTest) {
                 InputStream stdOutStream = systemUnderTestProcess.getInputStream();
+
                 readStreamPerpetually(stdOutStream);
             }
         };
@@ -45,6 +46,7 @@ public class SystemUnderTestHarness {
         return () -> {
             while (!this.killSwitches.killSystemUnderTest) {
                 InputStream stdErrStream = systemUnderTestProcess.getErrorStream();
+
                 readStreamPerpetually(stdErrStream);
             }
         };
