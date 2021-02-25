@@ -1,4 +1,4 @@
-package org.insu.claim;
+package org.ins.claim;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

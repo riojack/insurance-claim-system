@@ -1,6 +1,6 @@
-package org.insu.claim.harnesses;
+package org.ins.claim.harnesses;
 
-import org.insu.claim.harnesses.stateful.KillSwitches;
+import org.ins.claim.harnesses.stateful.KillSwitches;
 
 import java.io.BufferedReader;
 import java.io.IOException;

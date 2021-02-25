@@ -1,4 +1,4 @@
-package org.insu.claim.tests;
+package org.ins.claim.tests;
 
 import cucumber.api.PendingException;
 import cucumber.api.java8.En;

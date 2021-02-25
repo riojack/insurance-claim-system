@@ -1,4 +1,4 @@
-package org.insu.claim;
+package org.ins.claim;
 
 public class Application {
     public static void main(String[] args) {
