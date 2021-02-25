@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:build/cucumber", "junit:build/cucumber.xml"},
         features = {"src/acceptance/resources/features"},
-        glue = {"org.insu.claim"}
+        glue = {"org.ins.claim"}
 )
 public class RunCukesTest {
 
