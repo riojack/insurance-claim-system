@@ -1,10 +1,10 @@
 package org.ins.claim.domain;
 
 public class Claim {
-    private String claimId;
-    private long filingTimestamp;
-    private String policyholderId;
-    private String claimCategory;
+    private final String claimId;
+    private final long filingTimestamp;
+    private final String policyholderId;
+    private final String claimCategory;
 
     public Claim(String claimId, long filingTimestamp, String policyholder, String claimCategory) {
         this.claimId = claimId;

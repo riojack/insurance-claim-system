@@ -1,5 +1,7 @@
 plugins {
     id 'com.adarshr.test-logger' version '2.1.1'
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 allprojects {
@@ -43,7 +45,9 @@ allprojects {
 
     dependencies {
         implementation 'joda-time:joda-time:2.10'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
 
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
         testImplementation 'junit:junit:4.12'
         testImplementation 'org.hamcrest:hamcrest-library:1.3'
 
