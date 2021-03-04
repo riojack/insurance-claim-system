@@ -1,6 +1,7 @@
 package org.ins.claim.services;
 
 import org.ins.claim.domain.Claim;
+import org.ins.claim.repositories.ClaimRepository;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,6 +14,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.joda.time.Instant.now;
+import static org.mockito.Mockito.mock;
 
 public class ClaimServiceTest {
     // Save a claim
@@ -23,12 +25,13 @@ public class ClaimServiceTest {
 
     @Before
     public void setUp() {
-        claimService = new ClaimService();
+        ClaimRepository claimRepository = mock(ClaimRepository.class);
+        claimService = new ClaimService(claimRepository);
     }
 
     @Test
     public void saveShouldSucceedWhenAllFieldsAreValid() {
-        Claim claim = new Claim(randomUUID().toString(), now().getMillis(), randomUUID().toString(), "");
+        Claim claim = new Claim( now().getMillis(), randomUUID().toString(), "");
 
         List<String> validation = claimService.saveClaim(claim);
 
@@ -37,7 +40,7 @@ public class ClaimServiceTest {
 
     @Test
     public void saveShouldFailIfTheClaimHasNoClaimId() {
-        Claim claim = new Claim(null, now().getMillis(), randomUUID().toString(), "");
+        Claim claim = new Claim( now().getMillis(), randomUUID().toString(), "");
 
         List<String> validation = claimService.saveClaim(claim);
 
@@ -46,7 +49,7 @@ public class ClaimServiceTest {
 
     @Test
     public void saveShouldFailIfTheClaimHasFilingDateOfZero() {
-        Claim claim = new Claim(randomUUID().toString(), 0, randomUUID().toString(), "");
+        Claim claim = new Claim( 0, randomUUID().toString(), "");
 
         List<String> validation = claimService.saveClaim(claim);
 
@@ -55,7 +58,7 @@ public class ClaimServiceTest {
 
     @Test
     public void saveShouldFailIfTheClaimHasNoPolicyholderId() {
-        Claim claim = new Claim(randomUUID().toString(), now().getMillis(), null, "");
+        Claim claim = new Claim( now().getMillis(), null, "");
 
         List<String> validation = claimService.saveClaim(claim);
 
@@ -64,7 +67,7 @@ public class ClaimServiceTest {
 
     @Test
     public void saveShouldAccumulateMultipleFailures() {
-        Claim claim = new Claim(null, 0, null, "");
+        Claim claim = new Claim( 0, null, "");
 
         List<String> validation = claimService.saveClaim(claim);
 

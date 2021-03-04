@@ -1,19 +1,29 @@
 package org.ins.claim.domain;
 
-public class Claim {
-    private final String claimId;
-    private final long filingTimestamp;
-    private final String policyholderId;
-    private final String claimCategory;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.util.UUID;
 
-    public Claim(String claimId, long filingTimestamp, String policyholder, String claimCategory) {
-        this.claimId = claimId;
+@Entity
+public class Claim {
+    @Id
+    @GeneratedValue
+    private UUID claimId;
+    private long filingTimestamp;
+    private String policyholderId;
+    private String claimCategory;
+
+    protected Claim() {
+    }
+
+    public Claim(long filingTimestamp, String policyholderId, String claimCategory) {
         this.filingTimestamp = filingTimestamp;
-        this.policyholderId = policyholder;
+        this.policyholderId = policyholderId;
         this.claimCategory = claimCategory;
     }
 
-    public String getClaimId() {
+    public UUID getClaimId() {
         return claimId;
     }
 
