@@ -1,15 +1,10 @@
 package org.ins.claim.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.UUID;
+import org.springframework.data.annotation.Id;
 
-@Entity
 public class Claim {
     @Id
-    @GeneratedValue
-    private UUID claimId;
+    private long claimId;
     private long filingTimestamp;
     private String policyholderId;
     private String claimCategory;
@@ -23,7 +18,7 @@ public class Claim {
         this.claimCategory = claimCategory;
     }
 
-    public UUID getClaimId() {
+    public long getClaimId() {
         return claimId;
     }
 

@@ -46,8 +46,9 @@ allprojects {
     dependencies {
         implementation 'joda-time:joda-time:2.10'
         implementation 'org.springframework.boot:spring-boot-starter-webflux:2.4.2'
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.4.2'
+        implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc:2.4.2'
 
+        runtimeOnly 'io.r2dbc:r2dbc-h2:0.8.4.RELEASE'
         runtimeOnly 'com.h2database:h2:1.4.200'
 
         testImplementation 'org.springframework.boot:spring-boot-starter-test:2.4.2'

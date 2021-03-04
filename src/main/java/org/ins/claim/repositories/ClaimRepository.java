@@ -1,9 +1,9 @@
 package org.ins.claim.repositories;
 
 import org.ins.claim.domain.Claim;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
 import java.util.UUID;
 
-public interface ClaimRepository extends CrudRepository<Claim, UUID> {
+public interface ClaimRepository extends ReactiveCrudRepository<Claim, UUID> {
 }
